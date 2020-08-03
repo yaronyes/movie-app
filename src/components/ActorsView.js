@@ -23,26 +23,28 @@ const ActorsView = props => {
     if(sortingValue !== "" || sortingValue === "none") {
         filteredActors.sort((a, b) => (sortingValue === 'age') ? a.Age() - b.Age() : compare(a[sortingValue], b[sortingValue]));
     }    
-    const actorComp = filteredActors.map(actor => <Col key={actor.id} sm><Actor actor={actor}/></Col>)
+    const actorComp = filteredActors.map(actor => <Col key={actor.id} sm={4} className="actor"><Actor actor={actor}/></Col>)
 
     return (
         <div className="actors-view">
-            <Row>
-                <Form>
-                    <Form.Row>
-                        <Form.Group as={Col}>
-                            <Form.Control type="text" value={filter} onChange={e => setFilter(e.target.value)} />   
-                        </Form.Group>
-                        <Form.Group as={Col}>
-                            <Form.Control as="select" value={sortingValue} onChange={e => setSortingValue(e.target.value)}>
-                                <option value="none">no sorting</option>
-                                <option value="firstName">first name</option>
-                                <option value="lastName">last name</option>
-                                <option value="age">age</option>
-                            </Form.Control>                 
-                        </Form.Group>                        
-                    </Form.Row>                
-                </Form>    
+            <Row id="form-row">               
+                <Col sm>
+                    <Form>
+                        <Row>
+                            <Col md={4}>
+                                <Form.Control type="text" value={filter} onChange={e => setFilter(e.target.value)} placeholder="filter"/>                          
+                            </Col>
+                            <Col md={2}>
+                                <Form.Control as="select" value={sortingValue} onChange={e => setSortingValue(e.target.value)}>
+                                    <option value="none">sort</option>
+                                    <option value="firstName">first name</option>
+                                    <option value="lastName">last name</option>
+                                    <option value="age">age</option>
+                                </Form.Control>    
+                            </Col>                                        
+                        </Row>                
+                    </Form>
+                </Col>                     
             </Row>
             <Row>
                 {actorComp}
