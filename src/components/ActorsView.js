@@ -6,7 +6,7 @@ import Actor from './Actor';
 const ActorsView = props => {
     const { actors } = props;
     const [filter, setFilter] = useState("");
-    const [sortingValue, setSortingValue] = useState("");
+    const [sortingValue, setSortingValue] = useState("none");
     
     const compare = (a, b) => {
         if (a < b) {
@@ -35,7 +35,7 @@ const ActorsView = props => {
                         </Form.Group>
                         <Form.Group as={Col}>
                             <Form.Control as="select" value={sortingValue} onChange={e => setSortingValue(e.target.value)}>
-                                <option value="none"></option>
+                                <option value="none">no sorting</option>
                                 <option value="firstName">first name</option>
                                 <option value="lastName">last name</option>
                                 <option value="age">age</option>
