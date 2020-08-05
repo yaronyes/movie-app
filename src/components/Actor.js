@@ -9,8 +9,8 @@ const Actor = props => {
 
     return (
         <Card className="h-100">
-            <Card.Img className="img-fluid" variant="top" src={actor.imageUrl}/>
-            <Card.Body>            
+            <Card.Img className="img-fluid" variant="top" src={actor.imageUrl} />
+            <Card.Body className="card-bg">            
             <a href={actor.imdbLink} target="_blank" rel="noopener noreferrer"><Card.Title>{`${actor.firstName} ${actor.lastName}`}</Card.Title></a>
                 <Card.Text className="h-25">
                 Age: {actor.Age()}

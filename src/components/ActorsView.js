@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Row, Col, Form } from 'react-bootstrap';
+import { Row, Col, Form, Navbar } from 'react-bootstrap';
 import Actor from './Actor';
 
 
@@ -18,8 +18,8 @@ const ActorsView = props => {
         
         return 0;
       }
-
-    const filteredActors = actors.filter(actor => actor.firstName.toUpperCase().includes(filter.toUpperCase()) || actor.lastName.toUpperCase().includes(filter.toUpperCase()));
+    
+    const filteredActors = actors.filter(actor => (`${actor.firstName.toUpperCase()} ${actor.lastName.toUpperCase()}`).includes(filter.toUpperCase()));
     if(sortingValue !== "" || sortingValue === "none") {
         filteredActors.sort((a, b) => (sortingValue === 'age') ? a.Age() - b.Age() : compare(a[sortingValue], b[sortingValue]));
     }    
@@ -27,24 +27,26 @@ const ActorsView = props => {
 
     return (
         <div className="actors-view">
-            <Row id="form-row">               
-                <Col sm>
-                    <Form>
-                        <Row>
-                            <Col md={4}>
-                                <Form.Control type="text" value={filter} onChange={e => setFilter(e.target.value)} placeholder="filter"/>                          
+            <Row id="form-row">                              
+                  <Navbar className="w-100">                      
+                        <Row className="justify-content-between w-100">
+                            <Col>
+                                <Form inline className="w-100">
+                                    <Form.Control type="text" value={filter} onChange={e => setFilter(e.target.value)} placeholder="filter" className="w-100"/>                          
+                                </Form>
                             </Col>
-                            <Col md={2}>
-                                <Form.Control as="select" value={sortingValue} onChange={e => setSortingValue(e.target.value)}>
-                                    <option value="none">sort</option>
-                                    <option value="firstName">first name</option>
-                                    <option value="lastName">last name</option>
-                                    <option value="age">age</option>
-                                </Form.Control>    
+                            <Col>
+                                <Form inline className="w-100">
+                                    <Form.Control as="select" value={sortingValue} onChange={e => setSortingValue(e.target.value)} className="ml-auto">
+                                                <option value="none">sort</option>
+                                                <option value="firstName">first name</option>
+                                                <option value="lastName">last name</option>
+                                                <option value="age">age</option>
+                                    </Form.Control>  
+                                </Form>    
                             </Col>                                        
-                        </Row>                
-                    </Form>
-                </Col>                     
+                        </Row>                                             
+                </Navbar>                      
             </Row>
             <Row>
                 {actorComp}
