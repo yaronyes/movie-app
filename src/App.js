@@ -1,5 +1,4 @@
 import React, {useState, useEffect}from 'react';
-import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Container } from 'react-bootstrap';
@@ -12,7 +11,7 @@ function App() {
   
   const loadData = async () =>  {
     const response = await loadActors("actors.json");
-    setActors(response.data.map(actor => new ActorModel(actor.id, actor.firstName, actor.lastName, actor.birthday, actor.imageUrl, actor.imdbLink)));
+    setActors(response.data.map(actor => new ActorModel({ ...actor })));
   }
   
   useEffect(() => {     

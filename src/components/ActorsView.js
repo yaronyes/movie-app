@@ -19,7 +19,7 @@ const ActorsView = props => {
         return 0;
       }
     
-    const filteredActors = actors.filter(actor => (`${actor.firstName.toUpperCase()} ${actor.lastName.toUpperCase()}`).includes(filter.toUpperCase()));
+    const filteredActors = actors.filter(({firstName, lastName}) => (`${firstName.toUpperCase()} ${lastName.toUpperCase()}`).trim().includes(filter.toUpperCase().trim()));
     if(sortingValue !== "" || sortingValue === "none") {
         filteredActors.sort((a, b) => (sortingValue === 'age') ? a.Age() - b.Age() : compare(a[sortingValue], b[sortingValue]));
     }    
