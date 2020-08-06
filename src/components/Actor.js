@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
+import './Actor.css'
 
 // This component draws card with image, name and age of an actor
 // Props:

@@ -1,0 +1,12 @@
+.actors-view {
+    padding: 20px 0; 
+  }
+  
+.actors-view header > h1 {
+    margin: 0;
+    color: white;
+  }
+
+  #form-row {
+    margin: 10px 0;
+  }

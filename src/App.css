@@ -42,31 +42,8 @@
 }
 
 
-.actors-view {
-  padding: 20px 0; 
-}
-
-header > h1 {
-  margin: 0;
-}
 
 #root {
   background-color: #282c34;
 }
 
-.card-img-top {
-   width: 100%;
-   height: 380px;
-}
-
-#form-row {
-  margin: 10px 0;
-}
-
-.actor {
-  margin-bottom: 10px;
-}
-
-.card-bg {
-  background-color: beige;
-}

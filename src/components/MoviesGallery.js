@@ -3,6 +3,7 @@ import { searchActorAndGetId, getMoviesForActor } from '../utils/utils';
 import MovieModel from '../data-model/MovieModel';
 import Movie from './Movie';
 import { Accordion } from 'react-bootstrap';
+import './MoviesGallery.css';
 
 const MoviesGallery = (props) => {
     const { selectedActor } = props;
@@ -25,8 +26,11 @@ const MoviesGallery = (props) => {
     }, [selectedActor]);
            
     return (
-        <div className="comp-m-gallery">            
-             <Accordion>    
+        <div className="comp-m-gallery">
+            <header>
+                <h1>Movies</h1>
+            </header>
+             <Accordion className="test">    
                 {moviesForActor}              
              </Accordion>            
         </div>

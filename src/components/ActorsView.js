@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Row, Col, Form, Navbar } from 'react-bootstrap';
 import Actor from './Actor';
+import './ActorsView.css';
 
 const ActorsView = props => {
     const { actors, onActorSelected } = props;
@@ -39,7 +40,7 @@ const ActorsView = props => {
                             </Col>
                             <Col lg={2} sm={6}>
                                 <Form inline className="w-100">
-                                    <Form.Control as="select" value={sortingValue} onChange={e => setSortingValue(e.target.value)} >
+                                    <Form.Control as="select" value={sortingValue} onChange={e => setSortingValue(e.target.value)} className="ml-auto" >
                                                 <option value="none">sort</option>
                                                 <option value="firstName">first name</option>
                                                 <option value="lastName">last name</option>

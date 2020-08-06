@@ -1,5 +1,6 @@
 import React, {useState, useEffect}from 'react';
 import { Card, Accordion, Col, Row, ListGroup } from 'react-bootstrap';
+import './Movie.css';
 
 const Movie = (props) => {
     const { movie } = props;
@@ -22,17 +23,18 @@ const Movie = (props) => {
     }
 
     return (
-        // <div className="comp-movie">            
+        <div className="comp-movie">            
             <Card onClick={getMovieData}>
                 <Accordion.Toggle as={Card.Header} eventKey={movie.id}>
                 {movie.name}
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey={movie.id}>
-                    <Row>
-                        <Col md={3}>
-                            <Card.Img className="img-fluid" variant="top" src={movie.poster} />
+                    <Row className="acc-row">
+                    {/* <div> */}
+                        <Col className="acc-col" md={3}>
+                            <Card.Img src={movie.poster} className="w-100"/>
                         </Col>      
-                        <Col md={9}>                            
+                        <Col className="acc-col" md={9}>                                                
                             <ListGroup>
                                 <ListGroup.Item>Director: {extraData.director}</ListGroup.Item>
                                 <ListGroup.Item>Main Stars: {extraData.mainStars.join(", ")}</ListGroup.Item>
@@ -41,9 +43,10 @@ const Movie = (props) => {
                         </Col>      
                         {/* <Card.Body>{director}</Card.Body> */}
                     </Row>                    
+                    {/* </div> */}
                 </Accordion.Collapse>
             </Card>
-        // </div>
+        </div>
     )
 };
 

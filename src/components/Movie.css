@@ -1,0 +1,11 @@
+.comp-movie .acc-col {
+    padding: 0;
+}
+
+.comp-movie .acc-row {
+    margin: 0;   
+}
+
+.comp-movie .card-header {
+    background-color: beige;
+}
