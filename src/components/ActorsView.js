@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { Row, Col, Form, Navbar } from 'react-bootstrap';
 import Actor from './Actor';
 
-
 const ActorsView = props => {
-    const { actors } = props;
+    const { actors, onActorSelected } = props;
     const [filter, setFilter] = useState("");
     const [sortingValue, setSortingValue] = useState("none");
     
@@ -23,21 +22,24 @@ const ActorsView = props => {
     if(sortingValue !== "" || sortingValue === "none") {
         filteredActors.sort((a, b) => (sortingValue === 'age') ? a.Age() - b.Age() : compare(a[sortingValue], b[sortingValue]));
     }    
-    const actorComp = filteredActors.map(actor => <Col key={actor.id} sm={4} className="actor"><Actor actor={actor}/></Col>)
+    const actorComp = filteredActors.map(actor => <Col key={actor.id} lg={3} md={4} sm={6} className="actor"><Actor actor={actor} onActorSelected={onActorSelected}/></Col>)
 
     return (
         <div className="actors-view">
+            <header>
+                <h1>Actors</h1>
+            </header>
             <Row id="form-row">                              
                   <Navbar className="w-100">                      
                         <Row className="justify-content-between w-100">
-                            <Col>
+                            <Col lg={10} sm={6}>
                                 <Form inline className="w-100">
                                     <Form.Control type="text" value={filter} onChange={e => setFilter(e.target.value)} placeholder="filter" className="w-100"/>                          
                                 </Form>
                             </Col>
-                            <Col>
+                            <Col lg={2} sm={6}>
                                 <Form inline className="w-100">
-                                    <Form.Control as="select" value={sortingValue} onChange={e => setSortingValue(e.target.value)} className="ml-auto">
+                                    <Form.Control as="select" value={sortingValue} onChange={e => setSortingValue(e.target.value)} >
                                                 <option value="none">sort</option>
                                                 <option value="firstName">first name</option>
                                                 <option value="lastName">last name</option>

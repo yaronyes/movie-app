@@ -5,10 +5,10 @@ import { Card } from 'react-bootstrap';
 // Props:
 // actor - ActorModel object - (e.g new ActorModel(1, "Jack", "Nicholson", "1937-04-22", "https://m.media-amazon.com/images/M/MV5BMTQ3OTY0ODk0M15BMl5BanBnXkFtZTYwNzE4Njc4._V1_.jpg", "https://www.imdb.com/name/nm0000197"))
 const Actor = props => {
-    const { actor } = props;
+    const { actor, onActorSelected } = props;
 
     return (
-        <Card className="h-100">
+        <Card className="h-100" onClick={() => onActorSelected(actor)}>
             <Card.Img className="img-fluid" variant="top" src={actor.imageUrl} />
             <Card.Body className="card-bg">            
             <a href={actor.imdbLink} target="_blank" rel="noopener noreferrer"><Card.Title>{`${actor.firstName} ${actor.lastName}`}</Card.Title></a>
