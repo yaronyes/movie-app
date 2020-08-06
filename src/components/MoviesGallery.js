@@ -2,6 +2,7 @@ import React, {useState, useEffect}from 'react';
 import { searchActorAndGetId, getMoviesForActor } from '../utils/utils';
 import MovieModel from '../data-model/MovieModel';
 import Movie from './Movie';
+import { Accordion } from 'react-bootstrap';
 
 const MoviesGallery = (props) => {
     const { selectedActor } = props;
@@ -10,14 +11,10 @@ const MoviesGallery = (props) => {
     const loadData = async () =>  {
         const id = await searchActorAndGetId(`${selectedActor.firstName} ${selectedActor.lastName}`);
         if(id) {
-            const movies = await getMoviesForActor(id);
-            
-            console.log(new MovieModel(movies.data.cast[0].id, movies.data.cast[0].title, movies.data.cast[0].poster_path));
-            
-            // movies.data.cast.forEach(movie => {
-                
-            // });
-            //movies.data.cast.map(movie => <Movie movie={new MovieModel(movie.title, "", movie.poster_path, "", "")}/>)
+            const response = await getMoviesForActor(id);
+
+            const actorMovies = response.data.cast.map((movie, i) => <Movie key={i} movie={new MovieModel(movie.id, movie.title, movie.poster_path)}/>);
+            SetMoviesForActor(actorMovies);
         }
     }
 
@@ -28,8 +25,10 @@ const MoviesGallery = (props) => {
     }, [selectedActor]);
            
     return (
-        <div className="comp-m-gallery">
-            {moviesForActor}
+        <div className="comp-m-gallery">            
+             <Accordion>    
+                {moviesForActor}              
+             </Accordion>            
         </div>
     )
 };

@@ -10,22 +10,22 @@ class MovieModel {
         this.director = "";
         this.mainStars = "";
 
-        this.populate();
+        //this.populate();
     }
 
     populate = async () => {                 
-        const movie = await getMovie(this.id);
-        this.length = movie.runtime;
+        const movie = await getMovie(this.id);        
+        this.length = movie.data.runtime;
 
         const credits = await getMovieCredits(this.id);
         const result = credits.data.crew.find(crew => crew.job && crew.job === 'Director');
-        console.log(result);
+        //console.log(result);
         if(result) {
             this.director = result.name;
         }
 
         const actors = credits.data.cast.filter(cast => cast.character && cast.order < 5);
-        this.mainStars = actors.map(actor => actor.name);
+        this.mainStars = actors.map(actor => actor.name);        
     }
 }
 
