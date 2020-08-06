@@ -20,18 +20,27 @@ export const searchActorAndGetId = async (actorName) => {
     }
 };
 
-// export const getActorId = async (id) => {
-//     try {
-//         const url = "";
-//         return await axios.get(url);
-//     } catch (e) {
-//         console.log(e);
-//     }
-// };
-
 export const getMoviesForActor = async (id) => {
     try {
         const url = `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${api_key}&language=en-US`;
+        return await axios.get(url);
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+export const getMovie = async (id) => {
+    try {
+        const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}&language=en-US`;
+        return await axios.get(url);
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+export const getMovieCredits = async (id) => {
+    try {        
+        const url = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`;
         return await axios.get(url);
     } catch (e) {
         console.log(e);
