@@ -19,17 +19,19 @@ const Movie = (props) => {
 
     // populate the movie with extra data upon opening the accordion
     const getMovieData = async () => {        
-        setCursor("wait-curser");
+        if(!extraData.director) {
+            setCursor("wait-curser");
         
-        await movie.populate();
-
-        setExtraData({
-            director:  <a href={`https://www.imdb.com/name/${movie.director.imdb_id}`} rel="noopener noreferrer" target="_blank">{movie.director.name}</a>,
-            mainStars: movie.mainStars.map((actor, i) => <span key={i}><a href={`https://www.imdb.com/name/${actor.imdb_id}`} rel="noopener noreferrer" target="_blank">{actor.name}</a>, </span>),
-            length: movie.length
-        });
-
-        setCursor("pointer-cursor");
+            await movie.populate();
+    
+            setExtraData({
+                director:  <a href={`https://www.imdb.com/name/${movie.director.imdb_id}`} rel="noopener noreferrer" target="_blank">{movie.director.name}</a>,
+                mainStars: movie.mainStars.map((actor, i) => <span key={i}><a href={`https://www.imdb.com/name/${actor.imdb_id}`} rel="noopener noreferrer" target="_blank">{actor.name}</a>, </span>),
+                length: movie.length
+            });
+    
+            setCursor("pointer-cursor");
+        }
     }
 
     return (
