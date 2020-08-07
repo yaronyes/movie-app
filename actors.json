@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "firstName": "Jack",
+        "lastName": "Nicholson",
+        "birthday": "1937-04-22", 
+        "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTQ3OTY0ODk0M15BMl5BanBnXkFtZTYwNzE4Njc4._V1_.jpg",
+        "imdbLink": "https://www.imdb.com/name/nm0000197"
+    },
+    {
+        "id": 2,
+        "firstName": "Robert",
+        "lastName": "De Niro",
+        "birthday": "1943-08-17", 
+        "imageUrl": "https://m.media-amazon.com/images/M/MV5BMjAwNDU3MzcyOV5BMl5BanBnXkFtZTcwMjc0MTIxMw@@._V1_.jpg",
+        "imdbLink": "https://www.imdb.com/name/nm0000134"
+    },
+    {
+        "id": 3,
+        "firstName": "Al",
+        "lastName": "Pacino",
+        "birthday": "1940-04-25", 
+        "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTQzMzg1ODAyNl5BMl5BanBnXkFtZTYwMjAxODQ1._V1_.jpg",
+        "imdbLink": "https://www.imdb.com/name/nm0000199"
+    }
+]
