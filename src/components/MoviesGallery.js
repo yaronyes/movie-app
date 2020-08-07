@@ -5,6 +5,11 @@ import Movie from './Movie';
 import { Accordion } from 'react-bootstrap';
 import './MoviesGallery.css';
 
+// this component draws a list with the all the movies for an actor.
+// Props:
+// selectedActor - string - the actor full name (e.g: "Jack Nicholson" )
+// State:
+// list of movies for the actor
 const MoviesGallery = (props) => {
     const { selectedActor } = props;
     const [moviesForActor, SetMoviesForActor] = useState([]);

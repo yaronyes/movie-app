@@ -2,22 +2,26 @@ import React, {useState, useEffect}from 'react';
 import { Card, Accordion, Col, Row, ListGroup } from 'react-bootstrap';
 import './Movie.css';
 
+// This component draws Accordion with movie details
+// Props:
+// movie - MovieModel class
+// State:
+// extraData - object with extras movie data to gain upon opening the accordion
 const Movie = (props) => {
-    const { movie } = props;
-    //const [director, setDirector] = useState("");
+    const { movie } = props;    
     const [extraData, setExtraData] = useState({
         director: "",
         mainStars: [],
         length: 0
     });
 
-    const getMovieData = async () => {
+    // populate the movie with extra data upon opening the accordion
+    const getMovieData = async () => {        
         await movie.populate();
 
-        //setDirector(movie.director);
         setExtraData({
-            director: movie.director,
-            mainStars: movie.mainStars,
+            director:  <a href={`https://www.imdb.com/name/${movie.director.imdb_id}`} rel="noopener noreferrer" target="_blank">{movie.director.name}</a>,
+            mainStars: movie.mainStars.map((actor, i) => <span key={i}><a href={`https://www.imdb.com/name/${actor.imdb_id}`} rel="noopener noreferrer" target="_blank">{actor.name}</a>, </span>),
             length: movie.length
         })
     }
@@ -30,20 +34,17 @@ const Movie = (props) => {
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey={movie.id}>
                     <Row className="acc-row">
-                    {/* <div> */}
                         <Col className="acc-col" md={3}>
                             <Card.Img src={movie.poster} className="w-100"/>
                         </Col>      
                         <Col className="acc-col" md={9}>                                                
                             <ListGroup>
-                                <ListGroup.Item>Director: {extraData.director}</ListGroup.Item>
-                                <ListGroup.Item>Main Stars: {extraData.mainStars.join(", ")}</ListGroup.Item>
-                                <ListGroup.Item>Length: {extraData.length}</ListGroup.Item>
+                                <ListGroup.Item><span className="l-title">Director: </span>{extraData.director}</ListGroup.Item>
+                                <ListGroup.Item><span className="l-title">Main Stars: </span>{extraData.mainStars}</ListGroup.Item>
+                                <ListGroup.Item><span className="l-title">Length: </span>{extraData.length} minutes</ListGroup.Item>
                             </ListGroup>                                  
                         </Col>      
-                        {/* <Card.Body>{director}</Card.Body> */}
-                    </Row>                    
-                    {/* </div> */}
+                    </Row>                                    
                 </Accordion.Collapse>
             </Card>
         </div>

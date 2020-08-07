@@ -46,3 +46,12 @@ export const getMovieCredits = async (id) => {
         console.log(e);
     }
 };
+
+export const getPerson = async (id) => {
+    try {        
+        const url = `https://api.themoviedb.org/3/person/${id}?api_key=${api_key}&language=en-US`;
+        return await axios.get(url);
+    } catch (e) {
+        console.log(e);
+    }
+};

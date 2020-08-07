@@ -9,3 +9,7 @@
 .comp-movie .card-header {
     background-color: beige;
 }
+
+.comp-movie .l-title {
+    color: gray;
+}
