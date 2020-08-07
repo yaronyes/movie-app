@@ -13,3 +13,11 @@
 .comp-movie .l-title {
     color: gray;
 }
+
+.pointer-cursor {
+    cursor: pointer;
+}
+
+.wait-curser {
+    cursor: wait;
+}
