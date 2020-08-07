@@ -5,15 +5,21 @@ import { Container } from 'react-bootstrap';
 import ActorModel from './data-model/ActorModel';
 import ActorsView from './components/ActorsView';
 import {loadActors} from './utils/utils';
-import MoviesGallery from './components/MoviesGallery'
+import MoviesGallery from './components/MoviesGallery';
+import jsonActors from './data/actors.json';
 
 function App() {
   const [actors, setActors] = useState([]);
   const [selectedActor, setSelectedActor] = useState();
   
   const loadData = async () =>  {
-    const response = await loadActors("actors.json");
-    setActors(response.data.map(actor => new ActorModel({ ...actor })));
+    // trying so solve net::ERR_TOO_MANY_REDIRECTS error when trying to load actors.json
+    try {
+      const response = await loadActors("actors.json");
+      setActors(response.data.map(actor => new ActorModel({ ...actor })));
+    } catch {
+      setActors(jsonActors.map(actor => new ActorModel({ ...actor })));
+    }        
   }
   
   useEffect(() => {     
