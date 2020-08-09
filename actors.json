@@ -1,6 +1,6 @@
 [
     {
-        "id": 1,
+        "id": 0,
         "firstName": "Jack",
         "lastName": "Nicholson",
         "birthday": "1937-04-22", 
@@ -8,7 +8,7 @@
         "imdbLink": "https://www.imdb.com/name/nm0000197"
     },
     {
-        "id": 2,
+        "id": 1,
         "firstName": "Robert",
         "lastName": "De Niro",
         "birthday": "1943-08-17", 
@@ -16,7 +16,7 @@
         "imdbLink": "https://www.imdb.com/name/nm0000134"
     },
     {
-        "id": 3,
+        "id": 2,
         "firstName": "Al",
         "lastName": "Pacino",
         "birthday": "1940-04-25", 
